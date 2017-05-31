@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: azure;
+}
+#cvCon {
+    display: flex;
+    justify-content: center;
+}
+canvas {
+    margin-top: 5vh;
+    align-self: center;
+}
