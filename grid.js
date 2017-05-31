@@ -185,8 +185,8 @@
                 grid.updateLiving();
             }
         };
+        
         a.draw = function () {
-
             a.ctx.fillStyle = 'azure';
             a.ctx.fillRect(0, 0, a.canvas.width, a.canvas.height);
             grid.filter(function (cell) {
@@ -210,8 +210,15 @@
                 a.ctx.stroke();
             };
         };
-        return a;
+       
+      return a
     };
     var game = new Game(120, 60);
     game.start();
+    function clearGrid() {
+    window.location.reload();
+}
+document.getElementById('stop').addEventListener('click', clearGrid);
+       
+    
 }());
