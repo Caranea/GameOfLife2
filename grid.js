@@ -219,8 +219,6 @@
     window.location.reload();
 }
 document.getElementById('stop').addEventListener('click', clearGrid);
-window.addEventListener('load', function() {
-    document.getElementsByClassName('prebackground')[0].style.display = "none";
-})       
+
     
 }());
