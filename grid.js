@@ -60,8 +60,8 @@
         a.ctx = a.canvas.getContext("2d");
         a.button = document.getElementById("start");
         var viewWidth = a.canvas.width = window.innerWidth - 250,
-        viewHeight = a.canvas.height = window.innerHeight - 200;
-            tilesHorizontal = tilesHorizontal || 20,
+            viewHeight = a.canvas.height = window.innerHeight - 200;
+        tilesHorizontal = tilesHorizontal || 20,
             tilesVertical = tilesVertical || 20;
         var tileWidth = a.canvas.width / tilesHorizontal;
         var tileHeight = tileWidth;
@@ -76,6 +76,10 @@
             return;
         };
         var gameOn = false;
+        var stop = function () {
+            gameOn = !gameOn;
+        }
+
         /*   var coords = function (event) {
                    var x = event.pageX - a.canvas.offsetLeft;
                    var y = event.pageY - a.canvas.offsetTop;
@@ -84,6 +88,8 @@
                    document.getElementById("coor").insertAdjacentHTML("beforeend", "[" + i + "," + j + "],");
                };
                a.canvas.addEventListener('click', coords);*/
+
+
         var dozen = function (event) {
             var points = [[38, 23], [38, 22], [38, 21], [39, 21], [41, 23], [42, 23], [42, 22], [42, 21]];
             (function () {
@@ -95,7 +101,7 @@
         };
         document.getElementById("dozen").addEventListener("click", function (event) {
             dozen(event);
-            gameOn = !gameOn;
+            stop();
         });
         var gun = function (event) {
             var points = [[28, 15], [28, 16], [28, 17], [29, 14], [29, 18], [30, 19], [30, 13], [31, 13], [31, 19], [33, 18], [33, 14], [34, 15], [34, 16], [34, 17], [35, 16], [32, 16], [19, 15], [18, 15], [18, 16], [19, 16], [38, 15], [39, 15], [39, 14], [39, 13], [38, 13], [38, 14], [40, 16], [40, 12], [42, 12], [42, 11], [42, 16], [42, 17], [52, 13], [52, 14], [53, 14], [53, 13]];
@@ -109,7 +115,7 @@
         };
         document.getElementById("gun").addEventListener("click", function (event) {
             gun(event);
-            gameOn = !gameOn;
+            stop();
         });
         var random = function (event) {
             for (var i = 0; i < tilesHorizontal; i++) {
@@ -125,7 +131,7 @@
         };
         document.getElementById("random").addEventListener("click", function (event) {
             random(event);
-            gameOn = !gameOn;
+            stop();
         });
         var flower = function (event) {
             var points = [[46, 28], [45, 28], [46, 27], [46, 29], [47, 28], [47, 26], [48, 27], [48, 29], [47, 30], [45, 30], [44, 29], [44, 27], [45, 26], [43, 27], [42, 27], [41, 27], [41, 26], [43, 26], [43, 25], [43, 24], [43, 23], [42, 25], [42, 24], [42, 23], [44, 25], [45, 24], [44, 23], [47, 25], [47, 24], [47, 23], [48, 23], [48, 25], [49, 26], [49, 25], [50, 25], [51, 25], [51, 26], [49, 24], [50, 24], [51, 24], [50, 27], [49, 29], [50, 29], [51, 29], [51, 30], [49, 30], [48, 31], [49, 31], [50, 31], [50, 32], [50, 33], [49, 33], [49, 32], [48, 33], [47, 32], [45, 31], [45, 32], [45, 33], [44, 33], [44, 31], [43, 32], [42, 32], [41, 32], [41, 31], [42, 31], [43, 31], [43, 30], [41, 30], [42, 29]];
@@ -138,7 +144,7 @@
         };
         document.getElementById("flower").addEventListener("click", function (event) {
             flower(event);
-            gameOn = !gameOn;
+            stop();
         });
         var line = function (event) {
             for (var i = 27; i < 69; i++) {
@@ -152,15 +158,23 @@
         };
         document.getElementById("line").addEventListener("click", function (event) {
             line(event);
-            gameOn = !gameOn;
+            stop();
         });
+        var s = document.getElementById("pause");
+
         window.onkeydown = function (e) {
             e = e || window.event;
             var key = e.which || e.keyCode;
             if (key === 83) {
-                gameOn = !gameOn;
+                stop();
             }
-        }
+        };
+
+        s.addEventListener("click", function () {
+            stop();
+        });
+
+
         window.onresize = function (event) {
             viewWidth = a.canvas.width = window.innerWidth - 200;
             viewHeight = a.canvas.height = window.innerHeight - 100;
@@ -174,8 +188,9 @@
             mouseDown = false;
             a.canvas.removeEventListener('mousemove', handleClick);
         });
+        var intID;
         a.start = function () {
-            setInterval(function () {
+            intID = setInterval(function () {
                 a.update();
                 a.draw();
             }, 50);
@@ -185,7 +200,7 @@
                 grid.updateLiving();
             }
         };
-        
+
         a.draw = function () {
             a.ctx.fillStyle = 'azure';
             a.ctx.fillRect(0, 0, a.canvas.width, a.canvas.height);
@@ -210,15 +225,36 @@
                 a.ctx.stroke();
             };
         };
-       
-      return a
-    };
-    var game = new Game(120, 60);
-    game.start();
-    function clearGrid() {
-    window.location.reload();
-}
-document.getElementById('stop').addEventListener('click', clearGrid);
 
-    
+        var nextGame;
+        a.clear = function () {
+            clearInterval(intID);
+            a.ctx.fillStyle = 'azure';
+            a.ctx.fillRect(0, 0, a.canvas.width, a.canvas.height);
+            a.ctx.fillStyle = '#001a1a';
+            a.ctx.lineWidth = 0.3;
+            for (var x = 0; x <= viewWidth; x += tileWidth) {
+                a.ctx.beginPath();
+                a.ctx.moveTo(x, 0);
+                a.ctx.lineTo(x, viewHeight);
+                a.ctx.stroke();
+            };
+            for (var y = 0; y <= viewHeight; y += tileHeight) {
+                a.ctx.beginPath();
+                a.ctx.moveTo(0, y);
+                a.ctx.lineTo(viewWidth, y);
+                a.ctx.stroke();
+            };
+            nextGame = new Game(90, 45);
+            nextGame.start();
+        };
+
+        document.getElementById('stop').addEventListener('click', function () {
+            a.clear();
+        });
+
+    };
+    var game = new Game(90, 45);
+    game.start();
+
 }());
