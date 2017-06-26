@@ -6,7 +6,7 @@
 body {
     background: azure;
 }
-.cvCon {
+#cvCon {
     display: flex;
     justify-content: center;
 }
@@ -14,7 +14,7 @@ canvas {
     margin-top: 5vh;
     align-self: center;
 }
-.btnCon {
+#btnCon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@ p {
     text-align: center;
 }
 
-  .pause {
+#pause {
     position: relative;
     top: -5px;
     left: -5px;
