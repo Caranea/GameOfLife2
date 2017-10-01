@@ -89,7 +89,25 @@
                };
                a.canvas.addEventListener('click', coords);*/
 
+        class Pattern {
+            constructor(points) {
+                this.points = points;
+            }
+            init() {
+                for (let i = 0, len = points.length; i < len; i++) {
+                    grid.getCell(points[i][0], points[i][1]).living = true;
+                }
+            }
+        }
 
+
+
+        const dozenPoints = [[38, 23], [38, 22], [38, 21], [39, 21], [41, 23], [42, 23], [42, 22], [42, 21]];
+        const dozen2 = new Pattern(dozenPoints);
+        console.log(dozen2)
+        document.getElementById("dozen").addEventListener("click", () => {
+                dozen2.init();
+        });
         var dozen = function (event) {
             var points = [[38, 23], [38, 22], [38, 21], [39, 21], [41, 23], [42, 23], [42, 22], [42, 21]];
             (function () {

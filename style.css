@@ -6,34 +6,18 @@
 body {
     background: azure;
 }
-#cvCon {
-    display: flex;
-    justify-content: center;
-}
-canvas {
-    margin-top: 5vh;
-    align-self: center;
-}
-#btnCon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btnCon {
+    width: 60%;
+    text-align:center;
+    margin: 0 auto;
 }
 button {
     padding:5px;
-    margin: 1em;
+    margin:5px;
 }
-p {
-    font-size: 5vh;
-    text-align: center;
+hr {
+    width: 80%;
+    margin:20px auto;
 }
 
-#pause {
-    position: relative;
-    top: -5px;
-    left: -5px;
-   margin: 10px;
-   padding: 5px 10px;
-    
-}
 

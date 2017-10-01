@@ -2,24 +2,27 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <title> JS Life </title>
 </head>
 
 <body>
-    <div id="cvCon"><canvas id="game">
-	</canvas></div>
-    <!--<p id="coor"></p>-->
-    <div id="btnCon">
-        <button type="button" id="line">Horizontal</button>
+    <div id="cvCon">
+        <canvas id="game">
+        </canvas>
+    </div>
+    <div class="btnCon">
         <button type="button" id="gun">Gosper glider gun</button>
         <button type="button" id="flower">Flower of Eden</button>
         <button type="button" id="dozen">Gliders by the dozen</button>
-        <button type="button" id="random">Random</button>
-        <button type="button" id="stop">Reload</button></div>
-    <p>Press S or click <button type="button" id="pause">S</button>to start/pause animation</p>
-    <script type="text/javascript" src="grid.js"></script>
-
-
+        <button type="button" id="random">Random</button><br />
+        <button type="button" id="start">Start</button>
+        <button type="button" id="stop">Pause</button>
+        <button type="button" id="clear">New game</button><hr />
+        <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">What am I?</a>
+    </div>
+    <script type="text/javascript" src="grid2.js"></script>
 </body>
 
 </html>
