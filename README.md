@@ -2,6 +2,8 @@
 
 JavaScript implementation of Life. 
 
+[Online](https://caranea.github.io/GameOfLife2/)
+
 ## How to use
 
 Choose one of the patterns, or make your own by clicking single cells.
@@ -15,7 +17,7 @@ Choose one of the patterns, or make your own by clicking single cells.
 
 ## Why is it interesting? 
 
-Life is a great example of how very complex and elaborate patterns can emerge from simple basic set of 4 rules. It resembles self-orginizing system in nature, such as behaviour of ant colony. These systems are seemingly intelligent, but might emerge from rules as simple as life's. Cellular automata are widely used in areas of math and science.
+Life is a great example of how very complex and elaborate patterns can emerge from simple set of rules.
 
-Read more at [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+Read more about cellular automata at [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
