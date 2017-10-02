@@ -20,8 +20,8 @@
             this.cells = new Array(width * height);
         }
         createCells() {
-            for (var i = 0; i < this.width; i++) {
-                for (var j = 0; j < this.height; j++) {
+            for (let i = 0; i < this.width; i++) {
+                for (let j = 0; j < this.height; j++) {
                     this.cells[i + j * this.width] = new Cell(i, j);
                 }
             }
@@ -81,10 +81,10 @@
                 const width = this.width;
                 const height = this.height
                 let points = []
-                for (var i = 0; i < width; i++) {
-                    for (var j = 0; j < height; j++) {
+                for (let i = 0; i < width; i++) {
+                    for (let j = 0; j < height; j++) {
                         let point = [i, j];
-                        var ran = Math.random() * 3;
+                        let ran = Math.random() * 3;
                         if (ran > 2.5) {
                             points.push(point)
                         }
@@ -94,13 +94,13 @@
             };
         }
         gridInit() {
-            for (var x = 0; x <= this.canvas.width; x += this.cellWidth) {
+            for (let x = 0; x <= this.canvas.width; x += this.cellWidth) {
                 this.ctx.beginPath();
                 this.ctx.moveTo(x, 0);
                 this.ctx.lineTo(x, this.canvas.height);
                 this.ctx.stroke();
             }
-            for (var y = 0; y <= this.canvas.height; y += this.cellHeight) {
+            for (let y = 0; y <= this.canvas.height; y += this.cellHeight) {
                 this.ctx.beginPath();
                 this.ctx.moveTo(0, y);
                 this.ctx.lineTo(this.canvas.width, y);
